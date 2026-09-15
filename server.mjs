@@ -1,0 +1,3 @@
+import { createServer } from 'node:http'; import { readFile, stat } from 'node:fs/promises'; import { extname, join } from 'node:path';
+const types={'.html':'text/html','.css':'text/css','.js':'application/javascript','.json':'application/json','.jpg':'image/jpeg','.png':'image/png','.mp4':'video/mp4','.xml':'application/xml'};
+createServer(async(req,res)=>{let p=decodeURIComponent(req.url.split('?')[0]); if(p==='/'||p==='')p='/index.html'; const f=join(process.cwd(),'public',p); try {if(!(await stat(f)).isFile())throw 0;res.writeHead(200,{'Content-Type':types[extname(f)]||'application/octet-stream'});res.end(await readFile(f));}catch{res.writeHead(404);res.end('Não encontrado');}}).listen(3000,()=>console.log('http://localhost:3000'));
