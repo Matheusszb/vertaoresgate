@@ -2,6 +2,41 @@
 
 Data: 17/11/2026. Projeto conectado ao repositório `Matheusszb/vertaoresgate` e publicado automaticamente pela Vercel. A atualização regional foi validada no domínio oficial após o push.
 
+## Missão complementar: guincho em Ipatinga (17/11/2026)
+
+**Estado desta etapa:** alterações implementadas e validadas localmente. A publicação citada acima se refere à etapa regional anterior; esta etapa complementar ainda não foi confirmada no domínio público. Sem acesso aos relatórios históricos do Search Console, não é possível afirmar ganho de posição, impressões ou contatos.
+
+### Intenção de busca e mudanças
+
+| URL | Antes | Agora | Intenção principal |
+| --- | --- | --- | --- |
+| `/` | Title: `Vertão Resgate \| Reboque Pesado e Destombamento em Ipatinga MG`; description iniciava com a marca | Title: `Guincho em Ipatinga MG \| Reboque Pesado \| Vertão Resgate`; description: `Guincho em Ipatinga/MG com a Vertão Resgate: reboque leve, pesado e extra pesado, destombamento e transporte de máquinas. Solicite atendimento.` | Busca ampla por guincho em Ipatinga, com acesso aos serviços especializados |
+| `/atendimento/ipatinga-mg/` | Title: `Reboque Pesado e Destombamento em Ipatinga MG \| Vertão Resgate`; descrição breve de serviços | Title mantido; description: `Base da Vertão Resgate em Ipatinga/MG. Saiba como solicitar reboque de caminhões, destombamento e transporte de máquinas conforme sua necessidade.` | Orientação local sobre tipos de serviço, chamado, destino, carga, acesso e orçamento |
+
+O H1 da home foi mantido: “Reboque pesado, destombamento e transporte em Ipatinga e região”. A introdução e uma resposta visível da home agora explicam o guincho em Ipatinga e apontam para a página local. O botão principal da home abre o WhatsApp com uma mensagem de consulta específica. A página de Ipatinga ganhou orientações sobre auto socorro, reboque de caminhões, destombamento e transporte de máquinas, além de perguntas objetivas. Reboque pesado, destombamento e transporte de máquinas passaram a apontar de volta para essa página por links descritivos. Não foram criadas URLs novas.
+
+Os links de WhatsApp das páginas geradas foram corrigidos para `https://wa.me/5531991579660`, sem o sinal `+` no caminho. Os links de ligação continuam em `tel:+5531991579660`.
+
+Os atributos `alt` da galeria e das imagens da home foram ajustados após inspeção visual dos arquivos. Duas fotos mostram escavadeiras sobre caminhões plataforma; uma mostra uma máquina de construção e outra, um veículo leve. Nenhuma foi descrita como foto tirada em Ipatinga sem comprovação. As fotografias, o CSS e o JavaScript foram preservados. A eventual autorização de uso das fotos ainda depende do proprietário.
+
+O `LocalBusiness` da home e das páginas geradas continua com o mesmo `@id`, telefone, Instagram e dez cidades em `areaServed`. O bairro Caravelas foi acrescentado ao endereço estruturado para corresponder ao endereço visível. O `Service` das páginas regionais recebeu a descrição própria da região e manteve referência ao identificador da empresa. Cada página regional conserva canonical próprio; não foram adicionadas avaliações, horários, preços ou tempos de chegada. O `WebSite`, `WebPage` e `BreadcrumbList` existentes permaneceram.
+
+### Regressão e limites da verificação
+
+- `node --check` de `seo-pages.mjs` e `regional-content.mjs`, `build.mjs` e `vercel-build.mjs`: passaram com Node 18.15.0 disponível nesta máquina.
+- Nos HTMLs gerados: 19 páginas, 19 titles únicos, um H1 e canonical correto por página, `index,follow`, JSON-LD parseável com `@id` sem duplicação por página e links internos sem destino ausente.
+- Sitemap com as mesmas 19 URLs da versão anterior, igual nas saídas `dist/` e `vercel-dist/`; `robots.txt` continua apontando para ele.
+- No servidor local, `/`, `/atendimento/ipatinga-mg/`, `/reboque-pesado/`, `/destombamento/` e `/atendimento/coronel-fabriciano-mg/` responderam HTTP 200; uma URL inexistente respondeu 404.
+- H1 da home e texto visível das outras nove páginas regionais iguais aos da versão anterior; apenas seus links de WhatsApp e a descrição do `Service` no JSON-LD mudaram. Os títulos dessas regiões foram mantidos. CSS e JavaScript gerados são idênticos aos anteriores.
+- O conteúdo da home e de Ipatinga é distinto e os dois canonicals são próprios. Isso reduz sobreposição de intenção; a ocorrência real de canibalização precisa ser observada no Search Console.
+- Não houve medição de LCP, INP, CLS ou TTFB, nem auditoria visual por navegador nesta etapa. Os assets e o cache existente não foram alterados; não se atribui ganho de performance sem medição. Links externos de WhatsApp e telefone foram conferidos no HTML, mas não foi realizada uma conversa ou chamada real.
+
+### Após a publicação
+
+No [Search Console](https://support.google.com/webmasters/answer/10268906?hl=pt-BR), enviar ou reconferir `sitemap.xml`, inspecionar `/` e `/atendimento/ipatinga-mg/` e comparar consultas como “guincho em ipatinga”, “reboque pesado em ipatinga” e “destombamento em ipatinga” por **página**. Registrar cliques, impressões, CTR e posição média em janelas equivalentes antes e depois. Sem dados históricos conectados nesta etapa, a linha de base está pendente. Validar os JSON-LD publicados no [Schema Markup Validator](https://validator.schema.org/) e os recursos elegíveis no [Rich Results Test](https://search.google.com/test/rich-results). Medir Core Web Vitals em celular com dados de campo quando disponíveis.
+
+No Perfil da Empresa no Google, avaliar **“Serviço de reboque” como categoria principal se ela estiver disponível e representar o negócio principal**; escolher apenas categorias pertinentes na lista do perfil, conforme a [orientação oficial de categorias](https://support.google.com/business/answer/7249669?hl=pt-BR). Cadastrar os serviços realmente prestados, com descrições fiéis; o Google permite editar essa lista no [perfil](https://support.google.com/business/answer/9455399?hl=pt-BR). Conferir nome, telefone, domínio oficial, fotos reais e cidades de atendimento. Confirmar se o endereço recebe clientes e atende aos requisitos de sinalização; se não, configurar corretamente como empresa de área de serviço e avaliar a exibição pública do endereço, segundo as [regras do Google](https://support.google.com/business/answer/9157481?hl=pt-BR). Solicitar apenas avaliações autênticas. Não foi feita alteração externa no perfil.
+
 ## Diagnóstico confirmado
 
 | Prioridade | Evidência | Tratamento |

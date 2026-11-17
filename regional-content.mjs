@@ -5,7 +5,13 @@ export const regionalContent = {
     context: 'Ipatinga é a cidade da base física da Vertão Resgate: Rua Apucarana, 235, bairro Caravelas. O endereço identifica a empresa; o ponto de atendimento de cada solicitação deve ser informado separadamente.',
     guidance: 'Para um chamado em Ipatinga, envie o bairro e um endereço ou ponto de referência preciso. Se o veículo estiver em rodovia, informe também a rodovia, o quilômetro e o sentido da pista. Para transporte, indique os endereços completos de coleta e entrega.',
     question: 'Onde fica a base da Vertão Resgate em Ipatinga?',
-    answer: 'A base informada fica na Rua Apucarana, 235, bairro Caravelas, Ipatinga/MG. Para solicitar um serviço, informe o local onde o veículo ou equipamento está.'
+    answer: 'A base informada fica na Rua Apucarana, 235, bairro Caravelas, Ipatinga/MG. Para solicitar um serviço, informe o local onde o veículo ou equipamento está.',
+    questions: [
+      ['Quando solicitar reboque pesado em Ipatinga?', 'Quando um caminhão ou outro veículo pesado não pode seguir viagem por meios próprios, descreva a situação à Vertão Resgate. A equipe avalia o porte, a condição do veículo, a carga e o acesso antes de orientar o atendimento.'],
+      ['Como pedir destombamento de caminhão?', 'Informe o local preciso, a posição do caminhão, a presença de carga e as condições de acesso. Fotos da ocorrência podem ajudar, desde que seja seguro registrá-las. A equipe avalia a operação antes de confirmar o serviço.'],
+      ['Como contratar transporte de máquinas em Ipatinga?', 'Envie o tipo de máquina, dimensões e peso se conhecidos, endereços de coleta e entrega e condições de carga e descarga. A Vertão Resgate avalia a rota e a viabilidade do transporte.'],
+      ['Que informações ajudam a obter um orçamento?', 'Informe o serviço desejado, localização, tipo e condição do veículo ou equipamento, carga quando houver e destino. Em rodovia, acrescente quilômetro e sentido; imagens podem ajudar a avaliação.']
+    ]
   },
   'coronel-fabriciano-mg': {
     context: 'Coronel Fabriciano integra a Região Metropolitana do Vale do Aço. A Vertão Resgate atende a cidade por deslocamento da base em Ipatinga; não informa uma segunda unidade física no município.',
