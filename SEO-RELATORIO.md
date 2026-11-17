@@ -4,7 +4,7 @@ Data: 17/11/2026. Projeto conectado ao repositório `Matheusszb/vertaoresgate` e
 
 ## Missão complementar: guincho em Ipatinga (17/11/2026)
 
-**Estado desta etapa:** alterações implementadas e validadas localmente. A publicação citada acima se refere à etapa regional anterior; esta etapa complementar ainda não foi confirmada no domínio público. Sem acesso aos relatórios históricos do Search Console, não é possível afirmar ganho de posição, impressões ou contatos.
+**Estado desta etapa:** alterações implementadas, validadas localmente e publicadas pelo commit `4b78122` no `main`. A checagem de implantação da Vercel retornou `success`, e o conteúdo novo foi confirmado no domínio oficial. Sem acesso aos relatórios históricos do Search Console, não é possível afirmar ganho de posição, impressões ou contatos.
 
 ### Intenção de busca e mudanças
 
@@ -27,6 +27,7 @@ O `LocalBusiness` da home e das páginas geradas continua com o mesmo `@id`, tel
 - Nos HTMLs gerados: 19 páginas, 19 titles únicos, um H1 e canonical correto por página, `index,follow`, JSON-LD parseável com `@id` sem duplicação por página e links internos sem destino ausente.
 - Sitemap com as mesmas 19 URLs da versão anterior, igual nas saídas `dist/` e `vercel-dist/`; `robots.txt` continua apontando para ele.
 - No servidor local, `/`, `/atendimento/ipatinga-mg/`, `/reboque-pesado/`, `/destombamento/` e `/atendimento/coronel-fabriciano-mg/` responderam HTTP 200; uma URL inexistente respondeu 404.
+- Na produção, essas cinco URLs responderam HTTP 200, com canonical próprio e sem `wa.me/+`; a home mostrou o novo title e a página de Ipatinga mostrou o guia local. `sitemap.xml` e `robots.txt` responderam HTTP 200; o sitemap publicado contém 19 URLs. A Vercel marcou o commit de implementação como concluído.
 - H1 da home e texto visível das outras nove páginas regionais iguais aos da versão anterior; apenas seus links de WhatsApp e a descrição do `Service` no JSON-LD mudaram. Os títulos dessas regiões foram mantidos. CSS e JavaScript gerados são idênticos aos anteriores.
 - O conteúdo da home e de Ipatinga é distinto e os dois canonicals são próprios. Isso reduz sobreposição de intenção; a ocorrência real de canibalização precisa ser observada no Search Console.
 - Não houve medição de LCP, INP, CLS ou TTFB, nem auditoria visual por navegador nesta etapa. Os assets e o cache existente não foram alterados; não se atribui ganho de performance sem medição. Links externos de WhatsApp e telefone foram conferidos no HTML, mas não foi realizada uma conversa ou chamada real.
