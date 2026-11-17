@@ -1,13 +1,13 @@
 # Auditoria e execução de SEO — Vertão Resgate
 
-Data: 17/11/2026. Alterações enviadas ao repositório `Matheusszb/vertaoresgate` e publicadas automaticamente pela Vercel no domínio oficial.
+Data: 17/11/2026. Projeto conectado ao repositório `Matheusszb/vertaoresgate` e à publicação automática da Vercel. Esta atualização regional foi validada localmente; sua publicação será verificada após o push.
 
 ## Diagnóstico confirmado
 
 | Prioridade | Evidência | Tratamento |
 | --- | --- | --- |
 | P0 | Home com dois blocos de empresa no JSON-LD e um `FAQPage` sem benefício de resultado rico esperado para este negócio | Um grafo único na home, com `LocalBusiness`, `WebSite` e `WebPage` |
-| P0 | Dez páginas regionais muito semelhantes; nove sem dados próprios suficientes | URLs preservadas; nove páginas fora do sitemap e com `noindex,follow` até terem conteúdo comprovado |
+| P0 | Dez páginas regionais muito semelhantes; nove estavam com `noindex,follow` | O proprietário confirmou cobertura e todos os serviços nas dez cidades. As páginas ganharam contexto e orientações locais; as nove voltaram ao sitemap e a `index,follow` |
 | P1 | Sete páginas de serviços com orientação curta e genérica | Conteúdo específico sobre uso, dados para consulta e perguntas úteis |
 | P1 | Cards de serviços da home sem links HTML para as páginas específicas | Seis cards passaram a ter links rastreáveis; os demais não têm página própria |
 | P1 | Páginas internas sem CTA fixo em celular | Barra de ligação e WhatsApp nas páginas geradas |
@@ -20,24 +20,24 @@ Em 17/11/2026, os quatro endereços HTTP/HTTPS e www/sem www responderam com red
 
 ## Arquivos e URLs
 
-Modificados: `seo-pages.mjs`, `seo-content.mjs` (novo), `public/index.html`, `public/styles.css`, `public/app.js`, `public/sitemap.xml`, `vercel.json` e este relatório. Não houve mudança de slug ou criação de URL pública.
+Modificados ao longo do projeto: `seo-pages.mjs`, `seo-content.mjs` (novo), `regional-content.mjs` (novo), `public/index.html`, `public/styles.css`, `public/app.js`, `public/sitemap.xml`, `vercel.json` e este relatório. Não houve mudança de slug ou criação de URL pública.
 
-URLs preservadas: `/`, sete serviços (`/reboque-pesado/`, `/reboque-extra-pesado/`, `/destombamento/`, `/transporte-de-maquinas/`, `/servico-munck/`, `/auxilio-quinta-roda/`, `/transporte-interestadual/`), `/atendimento/` e dez páginas em `/atendimento/{cidade}-mg/`. O sitemap passou de 19 para 10 URLs: home, sete serviços, hub de atendimento e Ipatinga. As outras nove páginas regionais continuam acessíveis para usuários, com canonical próprio e `noindex,follow`. A decisão pode ser revista assim que houver dados locais únicos e confirmados.
+URLs preservadas: `/`, sete serviços (`/reboque-pesado/`, `/reboque-extra-pesado/`, `/destombamento/`, `/transporte-de-maquinas/`, `/servico-munck/`, `/auxilio-quinta-roda/`, `/transporte-interestadual/`), `/atendimento/` e dez páginas em `/atendimento/{cidade}-mg/`. O sitemap voltou a conter 19 URLs, todas com canonical próprio e `index,follow`. Cada página regional explica o atendimento por deslocamento e oferece orientação ligada à localização; somente Ipatinga é apresentada como base física.
 
 Titles e meta descriptions existentes dos serviços foram preservados quando já eram distintos. A home também manteve seu title e H1, que já cobriam reboque pesado, destombamento e Ipatinga. As páginas geradas têm um H1, canonical, Open Graph e Twitter Card. O `Service` de cada página de serviço referencia o mesmo identificador da empresa; `WebPage`, `WebSite`, `LocalBusiness` e breadcrumbs usam IDs estáveis. Não foram publicados horários, notas, avaliações, capacidade, preços ou prazos sem comprovação.
 
 ## Validação efetivamente realizada
 
-- `node --check seo-pages.mjs` e `node --check seo-content.mjs`: passaram com Node 22.16.0 temporário.
+- `node --check seo-pages.mjs`, `node --check seo-content.mjs` e `node --check regional-content.mjs`: passaram com Node 22.16.0 temporário.
 - `node build.mjs` e `node vercel-build.mjs`: passaram; cada saída contém 19 páginas HTML, e os sitemaps das duas saídas são idênticos.
-- Checagem dos 19 HTMLs: um H1 e um canonical por página, titles únicos e JSON-LD parseável. Dez URLs no sitemap, nove regionais com `noindex,follow`, nenhum link interno de caminho absoluto quebrado.
+- Checagem dos 19 HTMLs: um H1 e um canonical por página, titles únicos e JSON-LD parseável. Dezenove URLs no sitemap, nenhuma regional com `noindex,follow` e nenhum link interno de caminho absoluto quebrado.
 - Prévia local: `/reboque-pesado/` respondeu HTTP 200. A automação visual do navegador estava indisponível nesta sessão; não houve inspeção por screenshot.
-- Produção: home e `/reboque-pesado/` responderam HTTP 200, com seis links de cards, um bloco JSON-LD na home e o novo conteúdo do serviço. A página de Coronel Fabriciano respondeu com `noindex,follow`; o sitemap publicado contém 10 URLs.
+- Produção antes da atualização regional: home e `/reboque-pesado/` responderam HTTP 200, com seis links de cards, um bloco JSON-LD na home e o novo conteúdo do serviço. A nova versão regional precisa de verificação após o deploy.
 - LCP, INP, CLS, FCP e TTFB não foram medidos antes/depois. Não há resultado Lighthouse ou PageSpeed a declarar. Schema Markup Validator e Rich Results Test ainda precisam ser executados no conteúdo publicado.
 
 ## Dependências do proprietário e ações externas
 
-**P0 — confirmar antes de promover páginas regionais:** cidades realmente atendidas, tipo de atendimento por cidade, rotas, operações documentadas e fotos com autorização. Confirmar também se o transporte interestadual anunciado no site cobre estados/rotas específicos. As nove páginas com pouco conteúdo devem receber material próprio verificável ou ser consolidadas no hub.
+**P0 — cobertura confirmada:** o proprietário confirmou atendimento e todos os serviços nas dez cidades listadas. A base de apoio fechada foi mantida apenas em Ipatinga. Não foram inventadas operações realizadas, tempos de chegada nem novas unidades físicas. Exemplos de ocorrências e fotos continuam pendentes e são opcionais para enriquecer as páginas. Confirmar separadamente se o transporte interestadual anunciado cobre estados e rotas específicos.
 
 **P1 — credibilidade e SEO local:** confirmar a URL oficial do Perfil da Empresa no Google, conferir nome/endereço/telefone no Perfil, Instagram e Bing Places, e atualizar serviços, áreas atendidas e fotos reais. Solicitar avaliações autênticas sem incentivos. Confirmar propriedade das fotografias existentes e obter autorização para estudos de caso sem dados sensíveis. Horário, frota, capacidades e histórico continuam **PENDENTE DE CONFIRMAÇÃO**.
 
@@ -47,8 +47,10 @@ Titles e meta descriptions existentes dos serviços foram preservados quando já
 
 ## Próximos 30, 60 e 90 dias
 
-- **30 dias (P0/P1):** confirmar cobertura e provas regionais, validar sitemap/schema e criar linha de base de consultas, cliques, contatos e Core Web Vitals.
-- **60 dias (P1):** aprofundar apenas páginas regionais com material exclusivo e cases autorizados; alinhar Perfil da Empresa, Bing Places e Instagram aos dados oficiais.
+- **30 dias (P0/P1):** validar sitemap/schema e criar linha de base de consultas, cliques, contatos e Core Web Vitals. Conferir o desempenho das dez páginas regionais no Search Console.
+- **60 dias (P1):** acrescentar casos e fotos autorizados às páginas regionais quando disponíveis; alinhar Perfil da Empresa, Bing Places e Instagram aos dados oficiais.
 - **90 dias (P2):** comparar consultas e contatos qualificados por serviço, revisar conteúdo e links internos, medir desempenho móvel e procurar parcerias editoriais legítimas.
 
 Referências de diretrizes: [sitemaps do Google](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), [política de doorway pages](https://developers.google.com/search/docs/essentials/spam-policies), [mudança de FAQ rich results](https://developers.google.com/search/blog/2023/08/howto-faq-changes), [configuração de cabeçalhos da Vercel](https://vercel.com/docs/project-configuration/vercel-json).
+
+Referências geográficas usadas nas páginas: [Região Metropolitana do Vale do Aço](https://www.siam.mg.gov.br/sla/download.pdf?idNorma=2148), [BR-381 entre Belo Horizonte e Governador Valadares](https://www.gov.br/antt/pt-br/assuntos/rodovias/novos-projetos-em-rodovias/br-381-mg), [BR-116 em Minas Gerais](https://www.gov.br/dnit/pt-br/assuntos/planejamento-e-pesquisa/desapropriacao-e-reassentamento/mg/br-116/br-116), [BR-262 em Manhuaçu](https://www.gov.br/dnit/pt-br/assuntos/planejamento-e-pesquisa/desapropriacao-e-reassentamento/mg/br-262) e [mapa rodoviário do DNIT](https://www.gov.br/dnit/pt-br/rodovias/mapa-de-gerenciamento/mapas-de-manutencao-janeiro-2025/147-mapa_mg.pdf). Essas fontes identificam vias e cidades; não comprovam operações específicas da empresa.

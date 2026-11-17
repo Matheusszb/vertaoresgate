@@ -1,13 +1,14 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { serviceContent } from './seo-content.mjs';
+import { regionalContent } from './regional-content.mjs';
 
 export const siteUrl = 'https://www.vertaosocorro.com.br';
 const phone = '(31) 99157-9660';
 const phoneLink = '+5531991579660';
 const whatsapp = `https://wa.me/${phoneLink}?text=${encodeURIComponent('Olá! Vim pelo site da Vertão Resgate e gostaria de solicitar atendimento.')}`;
 const instagram = 'https://www.instagram.com/vertao_resgate/';
-const areaServed = ['Ipatinga, MG'];
+const areaServed = ['Ipatinga, MG', 'Coronel Fabriciano, MG', 'Timóteo, MG', 'Caratinga, MG', 'Governador Valadares, MG', 'João Monlevade, MG', 'Manhuaçu, MG', 'Teófilo Otoni, MG', 'Muriaé, MG', 'Belo Horizonte, MG'];
 
 const services = [
   { slug: 'reboque-pesado', name: 'Reboque Pesado', title: 'Reboque Pesado em Ipatinga e Região | Vertão Resgate', description: 'Reboque pesado para caminhões e veículos pesados em Ipatinga, Vale do Aço e regiões de Minas Gerais.', intro: 'A Vertão Resgate realiza reboque pesado para caminhões e veículos pesados, com base em Ipatinga/MG e atendimento conforme a necessidade de cada operação.', detail: 'O serviço é indicado quando o deslocamento exige estrutura adequada ao porte do veículo. A equipe avalia as informações do chamado para orientar o atendimento e a logística necessária.', related: ['destombamento', 'auxilio-quinta-roda', 'reboque-extra-pesado'] },
@@ -57,16 +58,17 @@ function servicePage(item) {
 
 function regionPage(item) {
   const url = `${siteUrl}/atendimento/${item.slug}/`;
-  const indexable = item.slug === 'ipatinga-mg';
+  const content = regionalContent[item.slug];
   const breadcrumb = { name: item.city, group: 'Regiões atendidas', schema: crumbs(item.city, url, 'Regiões atendidas') };
-  const links = ['reboque-pesado', 'destombamento', 'transporte-de-maquinas'].map(slug => services.find(x => x.slug === slug)).map(x => `<a href="/${x.slug}/">${x.name}</a>`).join('');
-  const structured = indexable ? { '@context': 'https://schema.org', '@type': 'Service', '@id': url + '#service', name: 'Reboque e resgate em Ipatinga', serviceType: 'Reboque, resgate e transporte', provider: { '@id': siteUrl + '/#business' }, areaServed: { '@type': 'City', name: 'Ipatinga, MG' } } : null;
-  const place = indexable ? 'A base física está na Rua Apucarana, 235, bairro Caravelas, em Ipatinga. Informe o local da ocorrência e o destino pretendido ao entrar em contato.' : `A empresa se desloca a partir de Ipatinga/MG. Informe a localização em ${item.city}, o destino e o tipo de veículo ou equipamento para consultar a viabilidade do atendimento.`;
-  const message = `Olá, preciso consultar atendimento em ${item.city}. O local é [endereço].`;
-  const body = `<p class="eyebrow">${indexable ? 'Base em Ipatinga/MG' : 'Região atendida a partir de Ipatinga'}</p><h1>${indexable ? 'Reboque pesado e destombamento em Ipatinga' : `Atendimento de reboque e transporte em ${item.city}`}</h1><p class="seo-lead">${item.intro}</p><section class="seo-grid"><div><h2>${indexable ? 'Serviços com base em Ipatinga' : `Atendimento em ${item.city}`}</h2><p>${item.detail}</p><h2>Como consultar o atendimento</h2><p>${place}</p><p>Para reboque, informe tipo e condição do veículo, local de origem e destino. Para destombamento, descreva também a posição do veículo, a carga e o acesso ao local. Para transporte de máquinas, informe as características do equipamento.</p></div><aside class="seo-contact"><p class="eyebrow">Base em Ipatinga/MG</p><h2>Solicite atendimento</h2><a class="button primary" href="https://wa.me/${phoneLink}?text=${encodeURIComponent(message)}" target="_blank" rel="noreferrer">Chamar no WhatsApp</a><a class="phone" href="tel:${phoneLink}">${phone}</a></aside></section><section class="seo-links"><h2>Serviços relacionados</h2><div>${links}</div><p><a href="/atendimento/">Ver todas as regiões atendidas</a></p></section>`;
-  return { path: `atendimento/${item.slug}/index.html`, html: layout({ ...item, canonical: url, breadcrumb, body, structured, indexable }) };
+  const related = ['reboque-pesado', 'reboque-extra-pesado', 'destombamento', 'transporte-de-maquinas', 'servico-munck', 'auxilio-quinta-roda']
+    .map(slug => services.find(x => x.slug === slug))
+    .map(x => `<a href="/${x.slug}/">${x.name}</a>`).join('');
+  const structured = { '@context': 'https://schema.org', '@type': 'Service', '@id': url + '#service', name: `Reboque, resgate e transporte em ${item.city}`, serviceType: 'Reboque, resgate e transporte', provider: { '@id': siteUrl + '/#business' }, areaServed: { '@type': 'City', name: `${item.city}, MG` } };
+  const message = `Olá, preciso de atendimento em ${item.city}. O local é [endereço ou rodovia e km] e o serviço é [serviço].`;
+  const serviceList = 'Reboque leve, pesado e extra pesado; destombamento; auxílio de quinta roda; transporte de máquinas e equipamentos; serviço de empilhadeira e Munck; retirada e transporte em pátios de leilão; e operações especiais de resgate e transporte.';
+  const body = `<p class="eyebrow">${item.slug === 'ipatinga-mg' ? 'Base em Ipatinga/MG' : 'Atendimento a partir de Ipatinga/MG'}</p><h1>${item.slug === 'ipatinga-mg' ? 'Reboque pesado e destombamento em Ipatinga' : `Reboque, destombamento e transporte em ${item.city}`}</h1><p class="seo-lead">${item.intro}</p><section class="seo-grid"><div><h2>Atendimento em ${item.city}</h2><p>${content.context}</p><h2>Serviços disponíveis</h2><p>${serviceList}</p><p>A base de apoio fechada fica em Ipatinga; a disponibilidade e a logística de cada serviço são confirmadas conforme a solicitação.</p><h2>Como preparar o chamado</h2><p>${content.guidance}</p></div><aside class="seo-contact"><p class="eyebrow">Base em Ipatinga/MG</p><h2>Solicite atendimento</h2><a class="button primary" href="https://wa.me/${phoneLink}?text=${encodeURIComponent(message)}" target="_blank" rel="noreferrer">Chamar no WhatsApp</a><a class="phone" href="tel:${phoneLink}">${phone}</a></aside></section><section class="seo-links seo-answers"><h2>Pergunta frequente</h2><h3>${esc(content.question)}</h3><p>${esc(content.answer)}</p></section><section class="seo-links"><h2>Conheça os serviços</h2><div>${related}</div><p><a href="/atendimento/">Ver todas as regiões atendidas</a></p></section>`;
+  return { path: `atendimento/${item.slug}/index.html`, html: layout({ ...item, canonical: url, breadcrumb, body, structured }) };
 }
-
 function regionsHub() {
   const canonical = `${siteUrl}/atendimento/`;
   const list = regions.map(x => `<a href="/atendimento/${x.slug}/">${x.city} – MG</a>`).join('');
@@ -82,7 +84,7 @@ export async function writeSeoPages(outputDir) {
     await mkdir(join(filename, '..'), { recursive: true });
     await writeFile(filename, page.html);
   }
-  const urls = ['/', ...services.map(x => `/${x.slug}/`), '/atendimento/', '/atendimento/ipatinga-mg/'];
+  const urls = ['/', ...services.map(x => `/${x.slug}/`), '/atendimento/', ...regions.map(x => `/atendimento/${x.slug}/`)];
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.map(path => `<url><loc>${siteUrl}${path}</loc></url>`).join('')}</urlset>`;
   await writeFile(join(outputDir, 'sitemap.xml'), sitemap);
 }
