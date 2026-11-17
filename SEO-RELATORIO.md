@@ -1,6 +1,6 @@
 # Auditoria e execução de SEO — Vertão Resgate
 
-Data: 17/11/2026. Escopo: checkout local; produção em Vercel não foi publicada nesta execução.
+Data: 17/11/2026. Alterações enviadas ao repositório `Matheusszb/vertaoresgate` e publicadas automaticamente pela Vercel no domínio oficial.
 
 ## Diagnóstico confirmado
 
@@ -16,7 +16,7 @@ Data: 17/11/2026. Escopo: checkout local; produção em Vercel não foi publicad
 
 O projeto é HTML/CSS/JS estático, com páginas de serviço e região geradas por `seo-pages.mjs`. `build.mjs` produz `dist/`; `vercel-build.mjs` produz `vercel-dist/`. A Vercel usa `vercel.json`. O conteúdo principal está no HTML inicial, sem exigir execução de JavaScript. `robots.txt` permite rastreamento e aponta para o sitemap. As imagens já tinham dimensões e lazy loading abaixo da dobra; o pôster principal já tinha preload e o vídeo era carregado após o início da página. Não houve troca de imagens, cores ou layout.
 
-Em 17/11/2026, os quatro endereços HTTP/HTTPS e www/sem www responderam com redirecionamentos 308 até `https://www.vertaosocorro.com.br/`. Uma URL inexistente respondeu 404. Os assets de produção consultados antes da mudança tinham cache `max-age=0`: imagem principal 357.239 bytes, CSS 16.813 bytes e vídeo 4.585.887 bytes. Os novos cabeçalhos só poderão ser verificados após publicação.
+Em 17/11/2026, os quatro endereços HTTP/HTTPS e www/sem www responderam com redirecionamentos 308 até `https://www.vertaosocorro.com.br/`. Uma URL inexistente respondeu 404. Os assets de produção consultados antes da mudança tinham cache `max-age=0`: imagem principal 357.239 bytes, CSS 16.813 bytes e vídeo 4.585.887 bytes. Após a publicação, a imagem principal respondeu com `max-age=86400` e o CSS com `max-age=3600`.
 
 ## Arquivos e URLs
 
@@ -32,6 +32,7 @@ Titles e meta descriptions existentes dos serviços foram preservados quando já
 - `node build.mjs` e `node vercel-build.mjs`: passaram; cada saída contém 19 páginas HTML, e os sitemaps das duas saídas são idênticos.
 - Checagem dos 19 HTMLs: um H1 e um canonical por página, titles únicos e JSON-LD parseável. Dez URLs no sitemap, nove regionais com `noindex,follow`, nenhum link interno de caminho absoluto quebrado.
 - Prévia local: `/reboque-pesado/` respondeu HTTP 200. A automação visual do navegador estava indisponível nesta sessão; não houve inspeção por screenshot.
+- Produção: home e `/reboque-pesado/` responderam HTTP 200, com seis links de cards, um bloco JSON-LD na home e o novo conteúdo do serviço. A página de Coronel Fabriciano respondeu com `noindex,follow`; o sitemap publicado contém 10 URLs.
 - LCP, INP, CLS, FCP e TTFB não foram medidos antes/depois. Não há resultado Lighthouse ou PageSpeed a declarar. Schema Markup Validator e Rich Results Test ainda precisam ser executados no conteúdo publicado.
 
 ## Dependências do proprietário e ações externas
@@ -40,13 +41,13 @@ Titles e meta descriptions existentes dos serviços foram preservados quando já
 
 **P1 — credibilidade e SEO local:** confirmar a URL oficial do Perfil da Empresa no Google, conferir nome/endereço/telefone no Perfil, Instagram e Bing Places, e atualizar serviços, áreas atendidas e fotos reais. Solicitar avaliações autênticas sem incentivos. Confirmar propriedade das fotografias existentes e obter autorização para estudos de caso sem dados sensíveis. Horário, frota, capacidades e histórico continuam **PENDENTE DE CONFIRMAÇÃO**.
 
-**P1 — publicação e medição:** publicar o build na Vercel, verificar os cabeçalhos de cache, repetir checagens das URLs em produção, validar os JSON-LD em [Schema Markup Validator](https://validator.schema.org/) e testar recursos elegíveis no [Rich Results Test](https://search.google.com/test/rich-results). Verificar sitemap e cobertura no Google Search Console e Bing Webmaster Tools. Medir Core Web Vitals no PageSpeed Insights e dados de campo quando disponíveis.
+**P1 — medição pós-publicação:** validar os JSON-LD em [Schema Markup Validator](https://validator.schema.org/) e testar recursos elegíveis no [Rich Results Test](https://search.google.com/test/rich-results). Verificar sitemap e cobertura no Google Search Console e Bing Webmaster Tools. Medir Core Web Vitals no PageSpeed Insights e dados de campo quando disponíveis.
 
 **P2 — autoridade e pesquisa:** procurar menções editoriais legítimas de parceiros/fornecedores. A pesquisa exploratória encontrou [ATVJ](https://atvj.com.br/) em proteção para pesados, [IBS Locações](https://ibslokmunck.webnode.page/) e [Ramalho Transportes](https://ramalhotransportes.com.br/) em Munck/movimentação. São serviços parcialmente sobrepostos, não um ranking de concorrentes diretos de destombamento. Oportunidade: publicar exemplos próprios, local e condições de solicitação com provas; não copiar textos.
 
 ## Próximos 30, 60 e 90 dias
 
-- **30 dias (P0/P1):** confirmar cobertura e provas regionais, publicar, validar sitemap/schema e criar linha de base de consultas, cliques, contatos e Core Web Vitals.
+- **30 dias (P0/P1):** confirmar cobertura e provas regionais, validar sitemap/schema e criar linha de base de consultas, cliques, contatos e Core Web Vitals.
 - **60 dias (P1):** aprofundar apenas páginas regionais com material exclusivo e cases autorizados; alinhar Perfil da Empresa, Bing Places e Instagram aos dados oficiais.
 - **90 dias (P2):** comparar consultas e contatos qualificados por serviço, revisar conteúdo e links internos, medir desempenho móvel e procurar parcerias editoriais legítimas.
 
