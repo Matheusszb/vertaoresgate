@@ -1,6 +1,6 @@
 # Auditoria e execução de SEO — Vertão Resgate
 
-Data: 17/11/2026. Projeto conectado ao repositório `Matheusszb/vertaoresgate` e à publicação automática da Vercel. Esta atualização regional foi validada localmente; sua publicação será verificada após o push.
+Data: 17/11/2026. Projeto conectado ao repositório `Matheusszb/vertaoresgate` e publicado automaticamente pela Vercel. A atualização regional foi validada no domínio oficial após o push.
 
 ## Diagnóstico confirmado
 
@@ -32,7 +32,7 @@ Titles e meta descriptions existentes dos serviços foram preservados quando já
 - `node build.mjs` e `node vercel-build.mjs`: passaram; cada saída contém 19 páginas HTML, e os sitemaps das duas saídas são idênticos.
 - Checagem dos 19 HTMLs: um H1 e um canonical por página, titles únicos e JSON-LD parseável. Dezenove URLs no sitemap, nenhuma regional com `noindex,follow` e nenhum link interno de caminho absoluto quebrado.
 - Prévia local: `/reboque-pesado/` respondeu HTTP 200. A automação visual do navegador estava indisponível nesta sessão; não houve inspeção por screenshot.
-- Produção antes da atualização regional: home e `/reboque-pesado/` responderam HTTP 200, com seis links de cards, um bloco JSON-LD na home e o novo conteúdo do serviço. A nova versão regional precisa de verificação após o deploy.
+- Produção: a Vercel marcou o commit regional como concluído. Coronel Fabriciano e Belo Horizonte responderam com `index,follow` e conteúdo local novo; o sitemap publicado contém 19 URLs. Na publicação anterior, a home e `/reboque-pesado/` responderam HTTP 200, com seis links de cards, um bloco JSON-LD na home e o novo conteúdo do serviço.
 - LCP, INP, CLS, FCP e TTFB não foram medidos antes/depois. Não há resultado Lighthouse ou PageSpeed a declarar. Schema Markup Validator e Rich Results Test ainda precisam ser executados no conteúdo publicado.
 
 ## Dependências do proprietário e ações externas
